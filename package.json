@@ -1,0 +1,41 @@
+{
+  "name": "radix-hover",
+  "displayName": "Radix Hover",
+  "description": "Show binary, decimal, hexadecimal, and octal conversions when hovering over integer literals.",
+  "version": "0.2.2",
+  "publisher": "local",
+  "license": "UNLICENSED",
+  "engines": {
+    "vscode": "^1.74.0"
+  },
+  "categories": ["Other"],
+  "activationEvents": ["onLanguage"],
+  "main": "./src/extension.js",
+  "contributes": {
+    "configuration": {
+      "title": "Radix Hover",
+      "properties": {
+        "radixHover.formats": {
+          "type": "array",
+          "scope": "resource",
+          "default": ["hex", "decimal", "binary"],
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "enum": ["hex", "decimal", "binary", "octal"]
+          },
+          "description": "Conversions to show, in order. The literal's own base is omitted. Set to an empty array to disable conversion hovers."
+        },
+        "radixHover.uppercaseHex": {
+          "type": "boolean",
+          "scope": "resource",
+          "default": true,
+          "description": "Use uppercase A–F digits in hexadecimal results."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "test": "node --test"
+  }
+}
